@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <!--Form-->
+        <form action="ahmet" method="post">
+            <div>
+                <!--Text tipinde bir input-->
+                <label for="name">Adınız: </label>
+                <input type="text" id="name" />
+
+            </div>
+
+            <div>
+                <!--Password tipinde bir input-->
+                <label for="parola">Parola: </label>
+                <input type="password" id="parola" />
+
+            </div>
+
+            <div>
+                <!--Text area tipinde bir input-->
+                <label for="intro"> Kendini tanımla: </label>
+                <textarea id="intro" cols="30"></textarea>
+            </div>
+
+            <div>
+                <!--Radio buton tipinde bir input-->
+                <p>En Sevdiginiz Programla Dili:</p>
+                <input type="radio" id="html" name="soru" />
+                <label for="html">HTML</label>
+
+                <input type="radio" id="css" name="soru" />
+                <label for="css">CSS</label>
+                
+                <input type="radio" id="java" name="soru" />
+                <label for="java">JAVA</label>
+            </div>
+
+            <div>
+                <!--Check box tipinde bir input-->
+                <p>En Sevdiginiz Programla Dili:</p>
+                <input type="checkbox" id="html2" />
+                <label for="html2">HTML</label>
+
+                <input type="checkbox" id="css2" />
+                <label for="css2">CSS</label>
+                
+                <input type="checkbox" id="java2" />
+                <label for="java2">JAVA</label>
+            </div>
+
+            <div>
+                <label for="cities">Sehir: </label>
+                <select id="cities">
+                    <option value="06">Ankara</option>
+                    <option value="11">Bilecik</option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="dgunu">Dogum Gununuz: </label>
+                <input type="date" id="dgunu" value="" />
+            </div>
+                
+            <div>
+                <label for="eposta">E-posta: </label>
+                <input type="email" id="eposta" value="" />
+            </div>
+
+            <button type="submit">Gönder</button>
+            <button type="reset">Temizle</button>
+        </form>
+        
+    </body>
+</html>
