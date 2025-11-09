@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content ="width=device-width, initial-scale=1.0">
+        <title>
+            JavaScript 3. Hafta
+        </title>
+
+    </head>
+    <body>
+        <h2> Metni Ekrana Yazdirma Uygulaması</h2>
+
+        <input type="text" id="metinKutusu" placeholder="Metin Giriniz"> </input>
+
+        <button onclick="yazdir()">Yazdır</button>"
+
+        <p id="sonuc"></p>
+
+        <script>
+
+            function yazdir() {
+                alert("Fonksiyona girildi")
+                let girilenMetin = document.getElementById("metinKutusu").value;
+                alert(girilenMetin);
+            }
+        </script>
+
+
+    </body>
+</html>

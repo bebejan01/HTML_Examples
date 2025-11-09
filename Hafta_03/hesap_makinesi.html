@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 100px auto;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .display {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 24px;
+            border: 1px solid #999;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #999;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .blue {
+            background-color: #007bff;
+        }
+
+        .red {
+            background-color: #dc3545;
+        }
+
+        .green {
+            background-color: #28a745;
+        }
+
+        .gray {
+            background-color: #6c757d;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <div class="button blue">7</div>
+            <div class="button blue">8</div>
+            <div class="button blue">9</div>
+            <div class="button blue">/</div>
+            <div class="button red">4</div>
+            <div class="button red">5</div>
+            <div class="button red">6</div>
+            <div class="button red">*</div>
+            <div class="button green">1</div>
+            <div class="button green">2</div>
+            <div class="button green">3</div>
+            <div class="button green">-</div>
+            <div class="button gray">0</div>
+            <div class="button gray">=</div>
+            <div class="button gray">+</div>
+            <div class="button gray">C</div>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let buttons = document.querySelectorAll('.button');
+        let firstNumber = '';
+        let operation = '';
+        let newNumber = false;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                let value = button.textContent;
+
+                if (value >= '0' && value <= '9') {
+                    if (display.textContent === '0' || newNumber) {
+                        display.textContent = value;
+                        newNumber = false;
+                    } else {
+                        display.textContent += value;
+                    }
+                } else if (value === 'C') {
+                    display.textContent = '0';
+                    firstNumber = '';
+                    operation = '';
+                    newNumber = false;
+                } else if (value === '=' && operation) {
+                    let result = calculate(parseFloat(firstNumber), parseFloat(display.textContent), operation);
+                    display.textContent = result;
+                    firstNumber = '';
+                    operation = '';
+                } else if (['+', '-', '*', '/'].includes(value)) {
+                    firstNumber = display.textContent;
+                    operation = value;
+                    newNumber = true;
+                }
+            });
+        });
+
+        function calculate(first, second, op) {
+            switch (op) {
+                case '+': return first + second;
+                case '-': return first - second;
+                case '*': return first * second;
+                case '/': return second !== 0 ? first / second : 'Error';
+                default: return second;
+            }
+        }
+    </script>
+</body>
+</html>

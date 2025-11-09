@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Başvuru Bilgileri</title>
+  <style>
+    :root{
+      --accent:#34c759;
+      --accent-hover:#2eb34f;
+      --border:#e5e7eb;
+      --shadow:0 8px 20px rgba(0,0,0,.06);
+      --radius:10px;
+      --font:15px/1.5 "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    body{
+      margin:0;
+      background:#f6f6f7;
+      font:var(--font);
+      color:#111;
+    }
+    h1{
+      text-align:center;
+      margin:30px 0 20px;
+    }
+    .form-card{
+      width:min(92%,760px);
+      margin:0 auto 40px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+    fieldset{
+      border:1px solid var(--border);
+      border-radius:8px;
+      margin-bottom:20px;
+      padding:18px;
+    }
+    legend{
+      font-weight:600;
+      color:#555;
+    }
+    label{
+      display:block;
+      margin:10px 0 6px;
+    }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea{
+      width:100%;
+      padding:10px 12px;
+      border:1px solid #d1d5db;
+      border-radius:6px;
+      font:inherit;
+      background:#fff;
+      outline:none;
+      transition:border-color .15s, box-shadow .15s;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color:#60a5fa;
+      box-shadow:0 0 0 3px rgba(59,130,246,.15);
+    }
+    textarea{min-height:80px; resize:vertical;}
+    .checkboxes{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      margin-top:6px;
+    }
+    .checkboxes label{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin:0;
+    }
+    button{
+      display:block;
+      width:100%;
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      padding:12px;
+      font-weight:600;
+      cursor:pointer;
+      font-size:16px;
+      transition:background .15s;
+    }
+    button:hover{background:var(--accent-hover);}
+  </style>
+</head>
+
+<body>
+  <h1>Başvuru Bilgileri</h1>
+
+  <form class="form-card">
+    <!-- Kişisel Bilgiler -->
+    <fieldset>
+      <legend>Kişisel Bilgiler</legend>
+      <label for="isim">İsim-Soyisim:</label>
+      <input type="text" id="isim" />
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" />
+
+      <label for="adres">Adres:</label>
+      <textarea id="adres"></textarea>
+    </fieldset>
+
+    <!-- Eğitim -->
+    <fieldset>
+      <legend>Eğitim</legend>
+      <label for="lise">Lise:</label>
+      <select id="lise">
+        <option value="lise">Lise</option>
+        <option value="ortaokul">Ortaokul</option>
+      </select>
+
+      <label for="calisma">Çalışma Alanı:</label>
+      <input type="text" id="calisma" />
+
+      <label>Bildiğiniz Diller:</label>
+      <div class="checkboxes">
+        <label for="ingilizce"><input type="checkbox" id="ingilizce" /> İngilizce</label>
+        <label for="almanca"><input type="checkbox" id="almanca" /> Almanca</label>
+        <label for="fransizca"><input type="checkbox" id="fransizca" /> Fransızca</label>
+      </div>
+    </fieldset>
+
+    <button type="submit">Başvuruyu Gönder</button>
+  </form>
+</body>
+</html>
