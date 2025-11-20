@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 12px;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: #ffffff;
+}
+
+h1 {
+    margin-bottom: 6px;
+    padding: 8px 10px;
+    border: 2px solid #333333;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+h2 {
+    margin: 8px 0;
+    padding: 6px 10px;
+    color: #c00000;
+    border-top: 8px solid #d40000;
+    border-bottom: 8px solid #d40000;
+    background: #fff8f8;
+    font-size: 22px;
+}
+
+h2.active {
+    border-color: #b3000f;
+}
+
+p {
+    margin: 6px 0;
+    padding: 4px 10px;
+    border-top: 8px solid #0c9a00;
+    border-bottom: 8px solid #0c9a00;
+    background: #ffffff;
+    font-size: 16px;
+}
+
+div.active {
+    padding: 6px;
+    border-top: 10px solid #006000;
+    border-bottom: 10px solid #006000;
+    background: #ffffff;
+}
+
+div.active p {
+    margin: 6px 0;
+    padding: 4px 10px;
+    border-top: 8px solid #006000;
+    border-bottom: 8px solid #006000;
+    background: #ffffff;
+}
+
+.paragraf {
+    border-top: 10px solid #f3d400;
+    border-bottom: 10px solid #f3d400;
+    color: #c08c00;
+    background: #fffdf0;
+    font-weight: 600;
+}
+
+#paragraf {
+    border-top: 10px solid #d40000;
+    border-bottom: 10px solid #d40000;
+    color: #c00000;
+    font-weight: 700;
+    background: #fff2f2;
+}
+
+h3 {
+    margin: 6px 0;
+    padding: 6px 10px;
+    border-top: 10px solid #f3d400;
+    border-bottom: 10px solid #f3d400;
+    background: #fffbe0;
+    font-size: 20px;
+}
+
+ul {
+    list-style: disc inside;
+    margin: 6px 0 0 0;
+    padding: 0 12px;
+}
+
+li {
+    margin: 4px 0;
+    padding: 4px 6px;
+    border: 1px solid #c0c0c0;
+    background: #f9f9f9;
+    font-size: 15px;
+}
+
+li.active {
+    background: #fff6b0;
+    color: #d27f00;
+    border-color: #f3d400;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+div > h2 {
+    margin-top: 12px;
+}
+
+div > p {
+    margin: 4px 0 0;
+}
+
+form {
+    margin-top: 16px;
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin: 10px 0 4px;
+    padding: 4px 2px;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #a4a4a4;
+    background: #ffffff;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin: 12px 0 0;
+    padding: 10px;
+    background: #0b8c38;
+    color: #ffffff;
+    border: 1px solid #06682a;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover {
+    background: #0a7a32;
+}

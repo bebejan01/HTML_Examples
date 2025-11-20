@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kişisel Web Sayfası</title>
+    <style>
+        /* Genel */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: #f7f8fb;
+            color: #1f2933;
+        }
+        /* Üst menü */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(90deg, #0f5ba7, #0e7ba1);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        nav .logo {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #e8f3ff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+        /* Sayfa düzeni */
+        .page {
+            max-width: 1100px;
+            margin: 26px auto;
+            padding: 0 20px 40px;
+        }
+        h1 {
+            color: #d62222;
+            font-size: 34px;
+            margin: 10px 0 14px;
+            letter-spacing: 0.05em;
+        }
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 3fr; /* %25 / %75 */
+            gap: 22px;
+            align-items: start;
+        }
+        /* Sol liste */
+        .side-list {
+            background: #ffffff;
+            border: 1px solid #d9e2ec;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(31, 41, 51, 0.06);
+        }
+        .side-list h2 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #0f5ba7;
+        }
+        .side-list ul {
+            margin: 0 0 0 14px;
+            padding: 0;
+            line-height: 1.6;
+        }
+        /* Ana içerik */
+        .main {
+            background: #ffffff;
+            border: 1px solid #d9e2ec;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(31, 41, 51, 0.08);
+        }
+        .hero img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #e0e6ed;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        }
+        .paragraphs p {
+            margin: 20px 0 0; /* 20px aralık */
+            line-height: 1.7;
+        }
+        /* Paragraf stilleri ve hizaları */
+        .para-1 {
+            text-align: left;
+            font-family: "Georgia", serif;
+            font-size: 18px;
+        }
+        .para-2 {
+            text-align: center;
+            font-family: "Arial", sans-serif;
+            font-size: 17px;
+            columns: 2; /* İki sütun */
+            column-gap: 26px;
+        }
+        .para-3 {
+            text-align: right;
+            font-family: "Trebuchet MS", sans-serif;
+            font-size: 16px;
+            letter-spacing: 0.04em;
+            word-spacing: 0.2em; /* Kelime ve harf aralığı farklı */
+        }
+        .para-4 {
+            text-align: justify; /* iki yana yaslı */
+            font-family: "Courier New", monospace;
+            font-size: 15px;
+        }
+        /* Küçük vurgular */
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #eef4ff;
+            color: #1f5fbf;
+            margin-left: 6px;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">KİŞİSEL SAYFA</div>
+            <ul>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#projeler">Projeler</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page">
+        <h1>UYGULAMA</h1>
+        <div class="layout">
+            <aside class="side-list">
+                <h2>Öne Çıkanlar</h2>
+                <ul>
+                    <li>Güncel projeler</li>
+                    <li>Kariyer yolu</li>
+                    <li>Blog yansımaları</li>
+                    <li>Okuma listesi</li>
+                    <li>Topluluk katkıları</li>
+                </ul>
+            </aside>
+
+            <section class="main">
+                <div class="hero">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1100&q=80" alt="Kişisel kapak görseli">
+                </div>
+                <div class="paragraphs">
+                    <p class="para-1" id="hakkimda">
+                        Merhaba, ben yaratıcı projeler geliştirmeyi seven bir yazılım geliştiricisiyim. Deneyimlerimi paylaşırken öğrenmeye ve üretmeye odaklanıyorum.<span class="tag">sola yaslı</span>
+                    </p>
+                    <p class="para-2" id="projeler">
+                        Üzerinde çalıştığım ürünler iki ana alana ayrılıyor: kullanıcı deneyimi odaklı web uygulamaları ve veriyle şekillenen karar destek araçları. Her iki tarafta da ölçülebilir, sürdürülebilir sonuçlar yaratmayı önemsiyorum.<span class="tag">merkezde • 2 sütun</span>
+                    </p>
+                    <p class="para-3">
+                        Planlama yaparken minimal fakat etkili araçlar kullanıyorum; bu sayede ekibin odağı hep net kalıyor. Tasarımdan kodlamaya uzanan süreçte küçük ayrıntılara gösterilen özenin büyük fark yarattığına inanıyorum.<span class="tag">sağa yaslı</span>
+                    </p>
+                    <p class="para-4" id="iletisim">
+                        Yeni fikirler, açık kaynak projeler veya etkinlik konuşmaları için iletişimde kalalım. Çevrimiçi buluşmalar, teknik yazılar ve topluluk destekleriyle paydaşları güçlendirecek çalışmalar üretmeyi sürdürüyorum.<span class="tag">iki yana yaslı</span>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
