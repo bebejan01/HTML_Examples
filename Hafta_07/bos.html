@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Magazasi</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --accent: #0ea5e9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 48px;
+    }
+    h1 {
+      margin: 0 0 20px;
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 600;
+      background: #f8fafc;
+      overflow: hidden;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+    }
+    .info h2 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+    .info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    button {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+    }
+    button:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(14,165,233,0.25); }
+    button:active { transform: translateY(0); opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <h1>Top Magazasi</h1>
+  <section class="grid">
+    <article class="card">
+      <div class="thumb">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShw-qBnFa8_KWOObraxGukR6PFFKvvy56RoA&s" alt="Puma Orbita 2024-25 Turkiye Super Lig Beyaz Futbol Topu">
+      </div>
+      <div class="info">
+        <h2>Klasik Futbol Topu</h2>
+        <p>Dikisli, 5 numara, sentetik deri kaplama. Antrenman ve maclar icin.</p>
+      </div>
+      <div class="meta">
+        <span class="price">799 TL</span>
+        <button type="button">Sepete ekle</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb">Basketbol Topu</div>
+      <div class="info">
+        <h2>Basketbol Topu</h2>
+        <p>Kaucuk kaplama, sokak sahalarina uygun, iyi tutus ve dayaniklik.</p>
+      </div>
+      <div class="meta">
+        <span class="price">649 TL</span>
+        <button type="button">Sepete ekle</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="thumb">Voleybol Topu</div>
+      <div class="info">
+        <h2>Sahil Voleybol Topu</h2>
+        <p>Yumusak yuzey, suya ve gunes isina dayanikli, hafif yapili.</p>
+      </div>
+      <div class="meta">
+        <span class="price">559 TL</span>
+        <button type="button">Sepete ekle</button>
+      </div>
+    </article>
+  </section>
+</body>
+</html>
