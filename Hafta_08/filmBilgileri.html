@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Film Kartlari</title>
+    <style>
+      :root {
+        --bg: #f5f2ea;
+        --card: #ffffff;
+        --ink: #1d1b16;
+        --accent: #c94e2b;
+        --muted: #6c645c;
+        --line: #e6e0d6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Georgia", "Times New Roman", serif;
+        color: var(--ink);
+      }
+
+      .wrap {
+        max-width: 980px;
+        margin: 40px auto;
+        padding: 0 16px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: 20px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+
+      label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--muted);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        font-size: 14px;
+        font-family: inherit;
+      }
+
+      textarea {
+        min-height: 90px;
+        resize: vertical;
+      }
+
+      button {
+        display: inline-block;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink);
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .poster {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        display: block;
+      }
+
+      .score {
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: #f8efe6;
+        font-weight: 600;
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 16px;
+      }
+
+      .overlay.active {
+        display: flex;
+      }
+
+      .modal {
+        width: min(420px, 100%);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .modal h3 {
+        margin: 0 0 12px;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-top: 12px;
+      }
+
+      .btn-ghost {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink);
+        padding: 8px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      .btn-solid {
+        border: 1px solid var(--line);
+        background: var(--ink);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 720px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="grid">
+        <section class="card">
+          <h2>Film Bilgileri</h2>
+          <div class="field">
+            <input id="film-adi" type="text" placeholder="Film Adı" />
+          </div>
+          <div class="field">
+            <input id="imdb" type="text" placeholder="IMBD Puani" />
+          </div>
+          <div class="field">
+            <input id="afis" type="text" placeholder="Afiş URL" />
+          </div>
+          <div class="field">
+            <textarea id="aciklama" placeholder="Film aciklamasi"></textarea>
+          </div>
+          <button id="update-card" type="button">Karti Guncelle</button>
+        </section>
+
+        <section class="card">
+          <img
+            id="preview-poster"
+            class="poster"
+            src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3NjAtNDQ0Zi00ZDJlLTk1ZDYtZTY1NmYyN2Q2YzA0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+            alt="The Matrix film afisi"
+          />
+          <h2 id="preview-title">Matrix</h2>
+          <div class="score" id="preview-score">IMBD Puani: 8.7</div>
+          <p class="desc" id="preview-desc">Film aciklamasi...</p>
+        </section>
+      </div>
+    </div>
+    <div class="overlay" id="poster-overlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="poster-title">
+        <h3 id="poster-title">Afis URL Guncelle</h3>
+        <div class="field">
+          <input id="poster-url-input" type="text" placeholder="https://..." />
+        </div>
+        <div class="modal-actions">
+          <button class="btn-ghost" type="button" id="poster-cancel">Iptal</button>
+          <button class="btn-solid" type="button" id="poster-save">Guncelle</button>
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="text-overlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="text-title">
+        <h3 id="text-title">Bilgiyi Guncelle</h3>
+        <div class="field">
+          <input id="text-input" type="text" />
+          <textarea id="text-area" class="hidden"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-ghost" type="button" id="text-cancel">Iptal</button>
+          <button class="btn-solid" type="button" id="text-save">Guncelle</button>
+        </div>
+      </div>
+    </div>
+    <script src="filmBilgileri.js"></script>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kacan & Saklanan Login Butonu</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(150deg, #000000, #777777);
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-box {
+        width: 330px;
+        padding: 25px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+      }
+
+      #loginBtn {
+        width: 100%;
+        padding: 10px;
+        background: #4c8bf5;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+
+      #status {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      #catcher {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        cursor: grab;
+      }
+
+      #catcher img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      #catcher:active {
+        cursor: grabbing;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="loginForm" method="post" action="oyun.html">
+      <div class="login-box">
+        <h2>Yakalayabilirsen Giris Yap</h2>
+
+        <div class="input-group">
+          <label>Kullanici Adi</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+
+        <div class="input-group">
+          <label>Sifre</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <button id="loginBtn" type="button">Giris Yap</button>
+
+        <p id="status"></p>
+      </div>
+    </form>
+
+    <div id="catcher">
+      <img src="police-car.png" id="catcherIcon" alt="catcher" />
+    </div>
+
+    <script>
+      const loginBtn = document.getElementById("loginBtn");
+      const catcher = document.getElementById("catcher");
+      const statusText = document.getElementById("status");
+
+      let dragging = false;
+      let isCaught = false;
+
+      const correctUser = "admin";
+      const correctPass = "123";
+
+      document.addEventListener("mousemove", (e) => {
+        if (isCaught) return;
+
+        const btnRect = loginBtn.getBoundingClientRect();
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const distance = Math.hypot(
+          mouseX - (btnRect.left + btnRect.width / 2),
+          mouseY - (btnRect.top + btnRect.height / 2)
+        );
+
+        if (distance < 120) {
+          loginBtn.style.opacity = "0";
+          loginBtn.style.pointerEvents = "none";
+        } else {
+          loginBtn.style.opacity = "1";
+          loginBtn.style.pointerEvents = "none";
+        }
+      });
+
+      catcher.addEventListener("mousedown", () => {
+        dragging = true;
+      });
+      document.addEventListener("mouseup", () => {
+        dragging = false;
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (dragging) {
+          catcher.style.left = e.clientX - 30 + "px";
+          catcher.style.top = e.clientY - 30 + "px";
+          checkCollision();
+        }
+      });
+
+      function checkCollision() {
+        const cRect = catcher.getBoundingClientRect();
+        const bRect = loginBtn.getBoundingClientRect();
+
+        const collided =
+          cRect.left < bRect.right &&
+          cRect.right > bRect.left &&
+          cRect.top < bRect.bottom &&
+          cRect.bottom > bRect.top;
+
+        if (collided && !isCaught) {
+          isCaught = true;
+          loginBtn.style.opacity = "1";
+          loginBtn.style.pointerEvents = "auto";
+          statusText.innerText = "Tebrikler butonu yakaladiniz.";
+          statusText.style.color = "green";
+        }
+      }
+
+      loginBtn.addEventListener("click", () => {
+        if (!isCaught) {
+          statusText.innerText = "Once catcher ile butonu yakalaman lazim!";
+          statusText.style.color = "red";
+          return;
+        }
+
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+
+        if (user === correctUser && pass === correctPass) {
+          statusText.innerText = "Giris basarili!";
+          statusText.style.color = "green";
+          document.getElementById("loginForm").submit();
+        } else {
+          statusText.innerText = "Hatali kullanici adi veya parola!";
+          statusText.style.color = "red";
+        }
+      });
+    </script>
+  </body>
+</html>

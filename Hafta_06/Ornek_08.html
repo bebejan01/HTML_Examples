@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8"">
+    <title>Mini Sinav Ornegi</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: f2f2f2;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border: 2px solid black;
+            margin-top: 20px;
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            paddding: 8px 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ürün Listesi</h1>
+    <p>Bu sayfa HTML, CSS ve JavaScript temel örneklerini içerir.</p>
+    <hr>
+
+    <h2>Favori Teknolojilerim</h2>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <ol>
+        <li>Başlık Tasarlama</li>
+        <li>Tablo oluşturma</li>
+        <li>Formm gönderme</li>
+    </ol>
+
+    <h2>Ürün Tabosu</h2>
+    <table>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+            <th>Açıklama</th>
+        </tr>
+        <tr>
+            <td>Ürün 1</td>
+            <td>100 TL</td>
+            <td>Bu birinci üründür.</td>
+        </tr>
+        <tr>
+            <td>Ürün 2</td>
+            <td>200 TL</td>
+            <td>Bu ikinci üründür.</td>
+        </tr>
+        <tr>
+            <td>Ürün 3</td>
+            <td>300 TL</td>
+            <td>Bu üçüncü üründür</td>
+        </tr>
+    </table>
+
+    <h2>İletşim Formu</h2>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+        <label for="ad">Adınız:</label>
+        <input type="text" id="ad" name="ad"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">Şifreniz:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label>Cinsiyet:</label>
+        <input type="radio" id="kadın" name="cinsiyet" value="Kadın">
+        <label for="kadın">Kadın</label>
+
+        <input type="radio" id="erkek" name="cinsiyet" value="Erkek">
+        <label for="erkek">Erkek</label>
+        <br><br>
+
+        <input type="submit" value="Gönder" class="btn">
+
+    </form>
+
+    <button class="btn" onclick="showDate()">Bugünün Tarihini Göster</button>
+
+    <div class="box" id="infoBox">
+        HTML içeriğini görsel olarak nasıl düzenleyeceğinizi ve biçimlendireceğinizi belirlemenizi sağlar.
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+        
+
+        const name = document.getElementById('ad').value;
+        const email = document.getElementById('email').value;
+        const genderInput = document.querySelector('input[name="cinsiyet"]:checked');
+        const gender = genderInput ? genderInput.value : "Belirtilmedi";
+
+
+        let message = "Merhaba" + name + "(" + email +") - Cinsiyet: " +  gender;
+        document.getElementById('infoBox').textcontent = message.toUpperCase();
+
+        }
+
+
+        function showDate() {
+            const d = new Date();
+            alert("Bugünün Tarihi: " + d.toLocaleDateString());
+
+        }
+
+        let val = String(10);
+        console.log("val tipi:", typeof val);
+
+        let x = 3;
+        x++;
+        console.log("x değeri:", x);
+
+        let numbers = [1, 2, 3];
+        numbers.push(4);
+        console.log("Dizi:", numbers);
+
+
+    </script>
+
+</body>
+</html>
